@@ -1,13 +1,13 @@
 %entered image is recommended to be atleast 100s of pizels wide and long
 clear
-orig=imread('Koala.jpg');
+orig=imread('prashar.jpg');
 %imshow(orig);
 a=size(orig);
 l=a(1);
 l=(floor((l/100)))*100; % rounding to multiple of 100
 w=a(2);
 w=(floor((w/100)))*100;
-origTr=orig(1:l,1:w,1:3);  % truncating image
+origTr=orig(1:l,1:w,:);  % truncating image
 %imshow(origTr);
 N=5;
 NN=N*N; %total pieces
@@ -38,3 +38,5 @@ for i=1:NN
         end
     end
 end
+%% Best Buddy
+BB=genBB(dissLUT,NN);

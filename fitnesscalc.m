@@ -1,4 +1,4 @@
-function F=fitnesscalc(A,dissLUT,N)
+function F=fitnesscalc(A,dissLUT,N) % A is an arrangement of pieces (chromosome)
 F=0;
     for i=1:N
         for j=1:N
