@@ -16,7 +16,6 @@ W=w/N;
 allPcs=zeros(L,W,3,NN);
 j=1;
 for i=1:NN              %divide image in NxN
-    ceil(i/N)
     allPcs(:,:,:,i)=origTr((L*(ceil(i/N)-1)+1):L*(ceil(i/N)),(W*(j-1)+1):W*(j),:);
     subplot(N,N,i);
     imshow(uint8(allPcs(:,:,:,i)));  %show pieces of puzzle 
@@ -24,5 +23,18 @@ for i=1:NN              %divide image in NxN
         j=1;
     else
     j=j+1;
+    end
+end
+%% dissimilarity and LUT
+dissLUT=zeros(NN,NN,2); %dissimilarity look up table
+%dissLUT stores right and down distances of each piece with every other
+%piece. This allows reduction in complexity and time.
+
+for i=1:NN
+    for j=1:NN
+        if(i~=j)
+            dissLUT(i,j,1)=dissimilarity(allPcs(:,:,:,i),allPcs(:,:,:,j),2,L,W); %piece i is right of j
+            dissLUT(i,j,2)=dissimilarity(allPcs(:,:,:,i),allPcs(:,:,:,j),4,L,W); %piece i is below j
+        end
     end
 end
