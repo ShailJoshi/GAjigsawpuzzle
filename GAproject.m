@@ -1,6 +1,6 @@
 %entered image is recommended to be atleast 100s of pizels wide and long
 clear
-orig=imread('prashar.jpg');
+orig=imread('Koala.jpg');
 %imshow(orig);
 a=size(orig);
 l=a(1);
