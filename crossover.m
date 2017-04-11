@@ -163,7 +163,6 @@ while (1)
                              validlr=validlr(validlr~=validlr(b));
                              mlr=mlr-1;
                         end
-                        
                     elseif(n==3)
                          if(ismember(rel,ABrelUD(1,:)))
                              b=ABrelUD(1,:)==rel;
@@ -173,8 +172,7 @@ while (1)
                              avlbl=avlbl(avlbl~=xA);
                              validud=validud(validud~=validud(b));
                              mud=mud-1;
-                        end
-                        
+                         end
                     elseif(n==4)
                         if(ismember(rel,ABrelUD(2,:)))
                              b=ABrelUD(2,:)==rel;
@@ -185,13 +183,11 @@ while (1)
                              validud=validud(validud~=validud(b));
                              mud=mud-1;
                         end
-                        
                     end
-                    
                 end
                 
             elseif(length(n)==2)
-                
+                rel=
                 
             elseif(length(n)==3)
                 
