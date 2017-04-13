@@ -1,4 +1,4 @@
-function C=crossover(A,B,BB,N,NN)
+function C=crossover(A,B,BBLR,BBUD,N,NN)
 
 ll=0;
 rl=0;
@@ -139,55 +139,117 @@ while (1)
             if(curr(2)<ll)
                 ll=curr(2);
             end
-            [rel,n]=findrelative(C,curr(1),curr(2));
+            [rel,n]=findrel(C,curr(1),curr(2));
             if(length(n)==1)
                 rel=rel(n);
-                if(ismember(rel,avlbl))
+                
                     if(n==1)
                         if(ismember(rel,ABrelLR(:,2)))
-                             b=ABrelLR(:,2)==rel;
-                             xA=ABrelLR(:,1);
-                             xA=xA(b);
-                             C(curr(1),curr(2))=xA;
-                             avlbl=avlbl(avlbl~=xA);
-                             validlr=validlr(validlr~=validlr(b));
-                             mlr=mlr-1;
+                            b=ABrelLR(:,2)==rel;
+                            xA=ABrelLR(:,1);
+                            xA=xA(b);
+                            if(ismember(xA,avlbl))
+                            C(curr(1),curr(2))=xA;
+                            avlbl=avlbl(avlbl~=xA);
+                            validlr=validlr(validlr~=validlr(b));
+                            mlr=mlr-1;
+                            end
                         end
                     elseif(n==2)
                         if(ismember(rel,ABrelLR(:,1)))
-                             b=ABrelLR(:,1)==rel;
-                             xA=ABrelLR(:,2);
-                             xA=xA(b);
-                             C(curr(1),curr(2))=xA;
-                             avlbl=avlbl(avlbl~=xA);
-                             validlr=validlr(validlr~=validlr(b));
-                             mlr=mlr-1;
+                            b=ABrelLR(:,1)==rel;
+                            xA=ABrelLR(:,2);
+                            xA=xA(b);
+                            if(ismember(xA,avlbl))
+                            C(curr(1),curr(2))=xA;
+                            avlbl=avlbl(avlbl~=xA);
+                            validlr=validlr(validlr~=validlr(b));
+                            mlr=mlr-1;
+                            end
                         end
                     elseif(n==3)
-                         if(ismember(rel,ABrelUD(1,:)))
-                             b=ABrelUD(1,:)==rel;
-                             xA=ABrelUD(2,:);
-                             xA=xA(b);
-                             C(curr(1),curr(2))=xA;
-                             avlbl=avlbl(avlbl~=xA);
-                             validud=validud(validud~=validud(b));
-                             mud=mud-1;
-                         end
+                        if(ismember(rel,ABrelUD(1,:)))
+                            b=ABrelUD(1,:)==rel;
+                            xA=ABrelUD(2,:);
+                            xA=xA(b);
+                            if(ismember(xA,avlbl))
+                            C(curr(1),curr(2))=xA;
+                            avlbl=avlbl(avlbl~=xA);
+                            validud=validud(validud~=validud(b));
+                            mud=mud-1;
+                            end
+                        end
                     elseif(n==4)
                         if(ismember(rel,ABrelUD(2,:)))
-                             b=ABrelUD(2,:)==rel;
-                             xA=ABrelUD(1,:);
-                             xA=xA(b);
-                             C(curr(1),curr(2))=xA;
-                             avlbl=avlbl(avlbl~=xA);
-                             validud=validud(validud~=validud(b));
-                             mud=mud-1;
+                            b=ABrelUD(2,:)==rel;
+                            xA=ABrelUD(1,:);
+                            xA=xA(b);
+                            if(ismember(xA,avlbl))
+                            C(curr(1),curr(2))=xA;
+                            avlbl=avlbl(avlbl~=xA);
+                            validud=validud(validud~=validud(b));
+                            mud=mud-1;
+                            end
+                        end
+                    end
+                
+                
+            elseif(length(n)==2)
+                x1=0;
+                if(ismember(1,n))
+                    if(ismember(rel(1),ABrelLR(:,2)))
+                        b=ABrelLR(:,2)==rel(1);
+                        xA=ABrelLR(:,1);
+                        xA=xA(b);
+                        if(ismember(xA,avlbl))
+                            x1=xA;
+                        end
+                    end
+                end
+                if(ismember(2,n))
+                    if(ismember(rel(2),ABrelLR(:,1)))
+                        b=ABrelLR(:,1)==rel(2);
+                        x2=ABrelLR(:,2);
+                        x2=x2(b);
+                        
+                        if(x1==x2)
+                            C(curr(1),curr(2))=x1;
+                            avlbl=avlbl(avlbl~=x1);
+                        end
+                        if(ismember(x2,avlbl))
+                            x1=x2;
+                        end
+                    end
+                end
+                if(ismember(3,n))
+                    if(ismember(rel(3),ABrelUD(1,:)))
+                        b=ABrelUD(1,:)==rel(3);
+                        x2=ABrelUD(2,:);
+                        x2=x2(b);
+                        if(x1==x2)
+                            C(curr(1),curr(2))=x1;
+                            avlbl=avlbl(avlbl~=x1);
+                        end
+                        if(ismember(x2,avlbl))
+                            x1=x2;
+                        end
+                    end
+                end
+                if(ismember(4,n))
+                    if(ismember(rel(4),ABrelUD(2,:)))
+                        b=ABrelUD(2,:)==rel(4);
+                        x2=ABrelUD(1,:);
+                        x2=x2(b);
+                        if(x1==x2)
+                            C(curr(1),curr(2))=x1;
+                            avlbl=avlbl(avlbl~=x1);
+                        end
+                        if(ismember(x2,avlbl))
+                            x1=x2;
                         end
                     end
                 end
                 
-            elseif(length(n)==2)
-                rel=
                 
             elseif(length(n)==3)
                 

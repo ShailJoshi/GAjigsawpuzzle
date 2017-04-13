@@ -3,7 +3,7 @@
 % r=3 up
 % r=4 down
 % ith row of BB contains 4 best buddies wrt to i in each direction
-function BB = genBB(dissLUT,NN)
+function [BB,BBLR,BBUD] = genBB(dissLUT,NN)
 BB=zeros(NN,4);
 BBLR=[,];
 BBUD=[;];
@@ -42,7 +42,5 @@ for i=1:NN
     if(ind2==i)
         BB(i,3)=ind;
     end
-    disp(BBUD);
-    disp(BBLR);
 end
 end

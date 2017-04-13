@@ -9,7 +9,7 @@ w=a(2);
 w=(floor((w/100)))*100;
 origTr=orig(1:l,1:w,:);  % truncating image
 %imshow(origTr);
-N=5;
+N=10;
 NN=N*N; %total pieces
 L=l/N;
 W=w/N;
@@ -39,4 +39,4 @@ for i=1:NN
     end
 end
 %% Best Buddy
-BB=genBB(dissLUT,NN);
+[BB,BBLR,BBUD]=genBB(dissLUT,NN);
