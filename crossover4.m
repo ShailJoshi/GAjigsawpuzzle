@@ -1,7 +1,4 @@
 function C=crossover4(A,B,BBLR,BBUD,N,NN,dissLUT)
-
-
-%Alternative
 C=A';
 C=C(:);
 ArelUD(1,:)=C(1:NN-N);
@@ -80,7 +77,7 @@ if(matches~=0)
     avlbl=avlbl(avlbl~=sel(2));
 else
     sel=randi(NN);
-    disp('No matches');
+    %disp('No matches');
     C(N+1,N+1)=sel;
     ll=N+1;
     rl=N+1;
