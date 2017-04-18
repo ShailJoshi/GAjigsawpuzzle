@@ -1,10 +1,10 @@
 %entered image is recommended to be atleast 100s of pizels wide and long
 clear
 orig=imread('prashar.jpg');
-N=10;                   %must be a divisor of image dimensions: 2,4,5,10,25,50 etc
-p=15;                   %population
+N=20;                   %must be a divisor of image dimensions: 2,4,5,10,25,50 etc
+p=12;                   %population
 eltN=1;                 %no. of elites
-
+genN=2;
 
 %imshow(orig);
 a=size(orig);
@@ -51,7 +51,7 @@ dispchrom(P0(:,:,1),N,allPcs)
 title('A randomly generated chromosome of initial population');
 
 %%
-for gen=1:8
+for gen=1:genN
     contestants=1:p;  % avilable contestants at any point
     for i=1:p
         fitness(i)=fitnesscalc(P0(:,:,i),dissLUT,N);        %calculate fitness
@@ -73,10 +73,15 @@ for gen=1:8
         newpopsize=newpopsize+1;
     end
     P0=newPop;
+    if(gen==2)
+        gen2best=P0(:,:,1);
+        dispchrom(P0(:,:,12),N,allPcs);
+        title('Generation 2');
+    end
 end
 figure
 plot(minfit)
 title('Fitness after each generation');
 figure
-dispchrom(P0(:,:,1),N,allPcs)   %display best image
+dispchrom(P0(:,:,1),N,allPcs);   %display best image
 title('Best image');
